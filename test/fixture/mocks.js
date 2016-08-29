@@ -60,7 +60,7 @@ class testAggregate {
 
 class testEvent {
   constructor(id, content) {
-    this.id = id;
+    this.aggregateId = id;
     this.content = content;
     this.aggregateType = "Test";
     this.type = "TestEvent"
@@ -101,6 +101,28 @@ class testEventHandler {
   }
 }
 
+class testEventBus {
+  constructor() {
+    this.events = [];
+  }
+
+  publishEvent() {
+
+  }
+
+  addHandler() {
+
+  }
+
+}
+
+class testModel {
+  constructor(id) {
+    this.id;
+    this.content;
+  }
+}
+
 module.exports = {
   testCommandHandler,
   testRepository,
@@ -109,4 +131,6 @@ module.exports = {
   testCommand,
   testEventStore,
   testEventHandler,
+  testEventBus,
+  testModel,
 };
