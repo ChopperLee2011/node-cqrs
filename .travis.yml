@@ -1,6 +1,15 @@
 language: node_js
 node_js:
   - "4.4"
+
+script:
+ - npm test
+
+branches:
+  only:
+    - master
+    - dev
+
 cache:
   bundler: true
   directories:
