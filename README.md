@@ -21,3 +21,4 @@ Inspired by the following libraries/examples:
  - [ ] example with restful api
  - [ ] snapshot support
  - [ ] use nodejs Event Emitter2
+  --- 
