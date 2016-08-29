@@ -22,3 +22,4 @@ Inspired by the following libraries/examples:
  - [ ] snapshot support
  - [ ] use nodejs Event Emitter2
   --- 
+  =--
