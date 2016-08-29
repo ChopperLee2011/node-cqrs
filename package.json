@@ -1,0 +1,27 @@
+{
+  "name": "node-cqrs",
+  "version": "0.0.1",
+  "description": "cqrs toolkit lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "cqrs"
+  ],
+  "author": "Chopper Lee <lihengpro@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=4.5.0"
+  }
+}
