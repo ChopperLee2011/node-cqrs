@@ -4,7 +4,8 @@ const EventBus = require('./lib/eventBus');
 const Aggregate = require('./lib/aggregate');
 const CommandBus = require('./lib/commandBus');
 const CommandHandler = require('./lib/commandHandler');
-const EventStore = require('./lib/storage/memory/eventStore');
+// const EventStore = require('./lib/storage/memory/eventStore');
+const EventStore = require('./lib/storage/couchbase/eventStore');
 const Repository = require('./lib/repository');
 
 

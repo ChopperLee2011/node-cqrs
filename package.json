@@ -12,6 +12,8 @@
   "author": "Chopper Lee <lihengpro@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "couchbase": "^2.2.2",
+    "couchnode": "^4.3.4",
     "debug": "^2.2.0",
     "uuid": "^2.0.2"
   },
