@@ -3,6 +3,6 @@
 const keyMirror = require('keyMirror');
 
 module.exports = keyMirror({
-  CREATE_INVITE: null,
-  ACCETP_INVITE: null
+  CREATE_ORDER: null,
+  CANCEL_ORDER: null
 })
