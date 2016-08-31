@@ -25,5 +25,17 @@
   },
   "engines": {
     "node": ">=4.5.0"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChopperLee2011/node-cqrs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChopperLee2011/node-cqrs/issues"
+  },
+  "homepage": "https://github.com/ChopperLee2011/node-cqrs#readme"
 }
