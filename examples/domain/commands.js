@@ -1,0 +1,7 @@
+'use strict';
+
+module.exports = {
+  CREATE_ORDER: 'CREATE_ORDER',
+  REFOUND_ORDER: 'REFOUND_ORDER',
+  CANCEL_ORDER: 'CANCEL_ORDER'
+}
