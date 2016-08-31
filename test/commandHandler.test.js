@@ -9,6 +9,7 @@ chai.use(sinonChai);
 const CommandHandler = require('../lib/commandHandler');
 const Mocks = require('./fixture/mocks');
 const uuid = require('uuid');
+const noop = () => {};
 
 describe('COMMAND-HANDLER', () => {
   let commandHandler;
@@ -36,7 +37,7 @@ describe('COMMAND-HANDLER', () => {
       const testAggregate = new Mocks.testAggregate(aggId);
       commandHandler.setAggregate(testAggregate.type, testCommand.type);
       const spy = sinon.spy(commandHandler.repository.load(testAggregate.type, testCommand.aggregateId), 'handleCommand');
-      commandHandler.handleCommand(testCommand);
+      commandHandler.handleCommand(testCommand, noop);
       expect(spy).to.have.been.called;
       spy.restore();
     })

@@ -25,20 +25,22 @@ describe('EVENT-STORE', () => {
       const testEvent = new Mocks.testEvent(id, 'event');
       eventStore.eventBus = eventBus;
       eventStore.save([testEvent]);
-      expect(eventStore.aggregateRecords.get(id).version).to.equal(0);
-      expect(eventStore.aggregateRecords.get(id).events).to.have.lengthOf(1);
+      expect(eventStore.aggregateRecords[0].version).to.equal(0);
       eventStore.save([testEvent]);
-      expect(eventStore.aggregateRecords.get(id).version).to.equal(1);
+      expect(eventStore.aggregateRecords[0].version).to.equal(0);
     })
 
-    it('#load', () => {
+    it('#load', done => {
       const id = uuid.v4();
       const eventBus = new Mocks.testEventBus();
       const testEvent = new Mocks.testEvent(id, 'event');
       eventStore.eventBus = eventBus;
       eventStore.save([testEvent]);
-      const events = eventStore.load(id);
-      expect(events).to.have.lengthOf(1);
+      eventStore.load(id)
+        .then(events => {
+          expect(events).to.have.lengthOf(1);
+          done();
+        });
     })
 
   })

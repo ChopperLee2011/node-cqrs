@@ -16,7 +16,7 @@ class testRepository {
     this.aggregates = new Map();
   }
 
-  load(aggreagetType, id) {
+  load(aggregateType, id) {
     return this.aggregates.get(id);
   }
 

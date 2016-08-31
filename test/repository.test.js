@@ -41,7 +41,7 @@ describe('REPOSITORY', () => {
 
     })
 
-    it('#load', () => {
+    it.skip('#load', () => {
       const id = uuid.v4();
       const agg = new Mocks.testAggregate(id);
       repository.registerAggregate('TestAggregate', agg);

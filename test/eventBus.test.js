@@ -10,7 +10,7 @@ const EventBus = require('../lib/eventBus');
 const Mocks = require('./fixture/mocks');
 const uuid = require('uuid');
 
-describe('COMMAND-HANDLER', () => {
+describe('EVENT-BUS', () => {
   let eventBus;
 
   beforeEach(() => {
@@ -23,10 +23,10 @@ describe('COMMAND-HANDLER', () => {
       const id = uuid.v4();
       const event = new Mocks.testEvent(id, 'event');
       const eventHandler = new Mocks.testEventHandler();
-      eventBus.addHandler(event.type, eventHandler);
+      eventBus.setHandler(event.type, eventHandler);
       const handlers = eventBus.eventHandlers.get(event.type);
       expect(handlers).to.have.lengthOf(1);
-      eventBus.addHandler(event.type, eventHandler);
+      eventBus.setHandler(event.type, eventHandler);
       //todo: maybe the result should be 1
       expect(handlers).to.have.lengthOf(2);
     })
@@ -35,7 +35,7 @@ describe('COMMAND-HANDLER', () => {
       const id = uuid.v4();
       const event = new Mocks.testEvent(id, 'event');
       const eventHandler = new Mocks.testEventHandler();
-      eventBus.addHandler(event.type, eventHandler);
+      eventBus.setHandler(event.type, eventHandler);
       const spy = sinon.spy(eventBus.eventHandlers.get(event.type)[0], 'handleEvent');
 
       eventBus.publishEvent(event);
