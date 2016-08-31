@@ -1,8 +1,7 @@
 'use strict';
 
-const keyMirror = require('keyMirror');
-
-module.exports = keyMirror({
-  CREATE_ORDER: null,
-  CANCEL_ORDER: null
-})
+module.exports = {
+  CREATE_ORDER: 'CREATE_ORDER',
+  REFOUND_ORDER: 'REFOUND_ORDER',
+  CANCEL_ORDER: 'CANCEL_ORDER'
+}
