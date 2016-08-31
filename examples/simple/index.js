@@ -16,8 +16,9 @@ const aggregateType = 'ORDER_AGGREGATE';
 repository.registerAggregate(aggregateType, OrderAggregate);
 
 const handler = new cqrs.CommandHandler(repository);
-const MemoryReadModel = cqrs.ReadModel('in-memory');
-const eventHandler = new MemoryReadModel();
+const ReadModel = require('./readModel');
+const Order = new ReadModel();
+const eventHandler = Order;
 handler.setAggregate(aggregateType, Commands.CREATE_ORDER);
 handler.setAggregate(aggregateType, Commands.REFOUND_ORDER);
 handler.setAggregate(aggregateType, Commands.CANCEL_ORDER);
@@ -27,9 +28,13 @@ commandBus.setHandler(Commands.REFOUND_ORDER, handler);
 commandBus.setHandler(Commands.CANCEL_ORDER, handler);
 
 eventBus.setHandler(Events.orderCreated, eventHandler);
+// eventBus.setHandler(Events.orderRefounded, eventHandler);
+eventBus.setHandler(Events.orderCanceled, eventHandler);
 
 const orderId = uuid.v4();
 const customerId = uuid.v4();
+
+// COMMAND: emit 'create order' command
 commandBus.handleCommand({
   aggregateId: orderId,
   aggregateType: aggregateType,
@@ -45,9 +50,10 @@ commandBus.handleCommand({
   if (err) {
     console.log('find error ', err);
   }
-  console.log('after CREATE_ORDER eventStore.aggregateRecords', eventStore.aggregateRecords);
+  // COMMAND: emit 'cancel order' command
   commandBus.handleCommand({
     aggregateId: orderId,
+    aggregateType: aggregateType,
     userId: 1,
     type: Commands.CANCEL_ORDER,
     data: {
@@ -57,7 +63,10 @@ commandBus.handleCommand({
     if (err) {
       console.log('find error ', err);
     }
-    console.log('after CANCEL_ORDER eventStore.aggregateRecords', eventStore.aggregateRecords);
+
+    //QUERY: emit 'find all order' query
+    const orders = Order.findAll();
+    console.log('findAll orders', orders);
   })
 });
 

@@ -31,6 +31,7 @@ class OrderAggregate extends Aggregate {
             aggregateType: OrderAggregateType,
             type: Events.orderCreated,
             userId: command.userId,
+            timestamp: Date.now(),
             data: {
               orderId: command.data.orderId,
               status: CREATE_ORDER_STATUS,
@@ -51,6 +52,7 @@ class OrderAggregate extends Aggregate {
             aggregateType: OrderAggregateType,
             type: Events.orderRefounded,
             userId: command.userId,
+            timestamp: Date.now(),
             data: {
               orderId: command.data.orderId,
               status: REFOUND_ORDER_STATUS
@@ -68,6 +70,7 @@ class OrderAggregate extends Aggregate {
             aggregateType: OrderAggregateType,
             type: Events.orderCanceled,
             userId: command.userId,
+            timestamp: Date.now(),
             data: {
               orderId: command.data.orderId,
               status: CANCEL_ORDER_STATUS
