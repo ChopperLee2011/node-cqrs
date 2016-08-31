@@ -17,8 +17,10 @@ Inspired by the following libraries/examples:
 
 ## Examples
    if you want see more detail information, please set `DEBUG=cqrs:*:*` ;
-   simple: `node examples/simple/index`
-   restful api: `node couchbase/simple/index`
+   
+   simple api: `node examples/simple/index`
+   
+   couchbase api: `node couchbase/simple/index`
 
 ## RoadMap
  - [X] implemented mostly methods in lib: eventhorizon
