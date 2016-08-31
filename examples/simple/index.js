@@ -4,7 +4,6 @@ const uuid = require('uuid');
 const OrderAggregate = require('../domain/aggregate');
 const Commands = require('../domain/commands');
 const Events = require('../domain/events');
-const OrderReadModel = require('./readModel');
 
 const eventBus = new cqrs.EventBus();
 const commandBus = new cqrs.CommandBus();
@@ -17,8 +16,8 @@ repository.registerAggregate(aggregateType, OrderAggregate);
 
 const handler = new cqrs.CommandHandler(repository);
 const ReadModel = require('./readModel');
-const Order = new ReadModel();
-const eventHandler = Order;
+const OrderReadModel = new ReadModel();
+const eventHandler = OrderReadModel;
 handler.setAggregate(aggregateType, Commands.CREATE_ORDER);
 handler.setAggregate(aggregateType, Commands.REFOUND_ORDER);
 handler.setAggregate(aggregateType, Commands.CANCEL_ORDER);
@@ -28,7 +27,7 @@ commandBus.setHandler(Commands.REFOUND_ORDER, handler);
 commandBus.setHandler(Commands.CANCEL_ORDER, handler);
 
 eventBus.setHandler(Events.orderCreated, eventHandler);
-// eventBus.setHandler(Events.orderRefounded, eventHandler);
+eventBus.setHandler(Events.orderRefounded, eventHandler);
 eventBus.setHandler(Events.orderCanceled, eventHandler);
 
 const orderId = uuid.v4();
@@ -65,7 +64,7 @@ commandBus.handleCommand({
     }
 
     //QUERY: emit 'find all order' query
-    const orders = Order.findAll();
+    const orders = OrderReadModel.findAll();
     console.log('findAll orders', orders);
   })
 });
