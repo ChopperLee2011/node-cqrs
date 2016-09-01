@@ -6,7 +6,7 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 
-const Repository = require('../lib/repository');
+const Repository = require('../../lib/repository');
 const Mocks = require('./fixture/mocks');
 const uuid = require('uuid');
 

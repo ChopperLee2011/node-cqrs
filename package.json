@@ -4,10 +4,11 @@
   "description": "cqrs toolkit lib",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/unit "
   },
   "keywords": [
-    "cqrs"
+    "cqrs",
+    "event sourcing"
   ],
   "author": "Chopper Lee <lihengpro@gmail.com>",
   "license": "ISC",
@@ -15,6 +16,9 @@
     "couchbase": "^2.2.2",
     "couchnode": "^4.3.4",
     "debug": "^2.2.0",
+    "kue": "^0.11.1",
+    "nsq-strategies": "^0.1.2",
+    "nsqjs": "^0.7.12",
     "uuid": "^2.0.2"
   },
   "devDependencies": {

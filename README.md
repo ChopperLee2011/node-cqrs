@@ -25,8 +25,7 @@ Inspired by the following libraries/examples:
 ## RoadMap
  - [X] implemented mostly methods in lib: eventhorizon
  - [X] couchbase storage support
- - [ ] simplify with lib: SimpleCQRS
- - [ ] change to use lib: node-eventStore
  - [ ] example with restful api
+ - [ ] change to use lib: node-eventStore
  - [ ] snapshot support
  - [ ] use nodejs Event Emitter2
