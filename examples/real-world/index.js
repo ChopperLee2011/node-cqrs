@@ -8,7 +8,7 @@ const Events = require('../domain/events');
 const KueEventBus = cqrs.EventBus('kue');
 const eventBus = new KueEventBus();
 const commandBus = new cqrs.CommandBus();
-const MemoryEventStore = cqrs.EventStore('in-memory');
+const MemoryEventStore = cqrs.EventStore('couchbase');
 const eventStore = new MemoryEventStore(eventBus);
 const repository = new cqrs.Repository(eventStore);
 const aggregateType = 'ORDER_AGGREGATE';
@@ -16,7 +16,7 @@ repository.registerAggregate(aggregateType, OrderAggregate);
 
 const handler = new cqrs.CommandHandler(repository);
 const ReadModel = require('./readModel');
-const OrderReadModel = new ReadModel();
+const OrderReadModel = new ReadModel({ host: 'localhost', database: 'rcqrs' });
 const eventHandler = OrderReadModel;
 handler.setAggregate(aggregateType, Commands.CREATE_ORDER);
 handler.setAggregate(aggregateType, Commands.REFOUND_ORDER);

@@ -1,6 +1,7 @@
 'use strict';
 
 const ReadModel = require('../../').ReadModel('in-memory');
+const queue = require('kue').createQueue();
 const debug = require('debug')('cqrs:simple:readModel');
 
 class OrderReadModel extends ReadModel {
@@ -16,8 +17,10 @@ class OrderReadModel extends ReadModel {
     switch (event.type) {
       case 'orderCreated':
         payload.version = 0;
-        this.save(payload.orderId, payload);
-        break;
+        return queue.process(event.aggregateId, (job, done) => {
+          this.save(event.aggregateId, event);
+          done();
+        });
       case 'orderRefounded':
         order = this.find(payload.orderId);
         order.status = payload.status;
@@ -48,7 +51,7 @@ class OrderReadModel extends ReadModel {
   // find all value
   findAll() {
     let models = [];
-    this.data.forEach((value,key) => {
+    this.data.forEach((value, key) => {
       models.push(value)
     });
     return models;
