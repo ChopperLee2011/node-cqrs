@@ -1,5 +1,5 @@
 {
-  "name": "node-cqrs",
+  "name": "node-cqrs-toolkit",
   "version": "0.0.3",
   "description": "cqrs toolkit lib",
   "main": "index.js",
