@@ -6,9 +6,9 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 
-const Aggregate = require('../lib/aggregate');
+const Aggregate = require('../../lib/aggregate');
 const Mocks = require('./fixture/mocks');
-const uuid = require('uuid')
+const uuid = require('uuid');
 
 describe('AGGREGATE', () => {
   let aggregate;

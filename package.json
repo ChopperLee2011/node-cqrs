@@ -1,13 +1,14 @@
 {
   "name": "node-cqrs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cqrs toolkit lib",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/unit "
   },
   "keywords": [
-    "cqrs"
+    "cqrs",
+    "event sourcing"
   ],
   "author": "Chopper Lee <lihengpro@gmail.com>",
   "license": "ISC",
@@ -15,6 +16,9 @@
     "couchbase": "^2.2.2",
     "couchnode": "^4.3.4",
     "debug": "^2.2.0",
+    "kue": "^0.11.1",
+    "nsq-strategies": "^0.1.2",
+    "nsqjs": "^0.7.12",
     "uuid": "^2.0.2"
   },
   "devDependencies": {
@@ -25,5 +29,17 @@
   },
   "engines": {
     "node": ">=4.5.0"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChopperLee2011/node-cqrs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChopperLee2011/node-cqrs/issues"
+  },
+  "homepage": "https://github.com/ChopperLee2011/node-cqrs#readme"
 }
