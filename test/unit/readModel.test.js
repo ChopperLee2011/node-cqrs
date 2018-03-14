@@ -6,7 +6,7 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 
-const ReadModel = require('../lib/storage/memory/readModel');
+const ReadModel = require('../../lib/storage/memory/readModel');
 const Mocks = require('./fixture/mocks');
 
 describe('COMMAND-HANDLER', () => {

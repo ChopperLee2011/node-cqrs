@@ -6,7 +6,7 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 
-const CommandBus = require('../lib/commandBus');
+const CommandBus = require('../../lib/commandBus');
 const Mocks = require('./fixture/mocks');
 const noop = () => {};
 
